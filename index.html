@@ -3,23 +3,21 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="theme-color" content="#0a0712" />
+  <meta name="theme-color" content="#07040f" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
   <title>AD ICONIQ — Official Store</title>
 
   <link rel="manifest" href="./manifest.webmanifest">
-  <link rel="stylesheet" href="./styles.css?v=7">
+  <link rel="stylesheet" href="./styles.css?v=1000">
 
-  <!-- Optional: nicer font without screaming “template” -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 
 <body class="bg">
-  <!-- Neon ambient layers -->
+  <!-- Ambient neon + grain -->
   <div class="ambient" aria-hidden="true">
     <div class="blob b1"></div>
     <div class="blob b2"></div>
@@ -28,12 +26,23 @@
     <div class="vignette"></div>
   </div>
 
-  <!-- Top bar -->
   <header class="topbar glass">
     <div class="brand">
       <div class="logo-orb" aria-hidden="true">
-        <span class="logo-txt">AD</span>
+        <svg class="logo-svg" viewBox="0 0 64 64" role="img" aria-label="AD">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ff2bd1"/>
+              <stop offset="0.55" stop-color="#7c3aed"/>
+              <stop offset="1" stop-color="#00d4ff"/>
+            </linearGradient>
+          </defs>
+          <path fill="url(#g1)" d="M20 46V18h10.2c7.7 0 13 5.3 13 14s-5.3 14-13 14H20zm7.2-6.3h3.1c4.2 0 6.7-2.8 6.7-7.7 0-5-2.5-7.7-6.7-7.7h-3.1v15.4z"/>
+          <path fill="rgba(10,7,18,.88)" d="M44.5 46l-2.2-6.2H32.4L30.2 46h-6.6l9.8-28h8.3l9.8 28h-7zm-10.3-11.6h6.1l-3-9.2-3.1 9.2z"/>
+        </svg>
+        <span class="logo-spec" aria-hidden="true"></span>
       </div>
+
       <div class="brand-copy">
         <div class="brand-name">AD ICONIQ</div>
         <div class="brand-sub">Official Store</div>
@@ -43,12 +52,10 @@
     <div class="topbar-actions">
       <label class="search glass-soft" aria-label="Search">
         <span class="icon">⌕</span>
-        <input id="search-input" type="search" placeholder="Search the catalog…" autocomplete="off" />
+        <input id="search-input" type="search" placeholder="Search…" autocomplete="off" />
       </label>
 
-      <a class="pill glass-soft" href="./catalog.html" aria-label="Shop">
-        Shop
-      </a>
+      <a class="pill glass-soft" href="./catalog.html" aria-label="Shop">Shop</a>
 
       <a class="pill glass-soft" href="./cart.html" aria-label="Cart">
         Cart <span id="cart-count" class="badge hidden">0</span>
@@ -57,21 +64,20 @@
   </header>
 
   <main class="wrap">
-    <!-- Hero -->
     <section class="hero">
       <div class="hero-card glass">
         <div class="hero-kicker">
           <span class="dot"></span>
-          <span>Electric glass commerce. Built for AD ICONIQ.</span>
+          <span>Electric glass commerce built for AD ICONIQ.</span>
         </div>
 
         <h1 class="hero-title">
-          Luxury, without noise.
-          <span class="shine">Neon, without cheap.</span>
+          Clean. Expensive.
+          <span class="shine">Neon, controlled.</span>
         </h1>
 
         <p class="hero-sub">
-          Real products pulled live from your Shopify Storefront API. Fast, clean, and mobile-first.
+          Live products pulled from Shopify Storefront API. Minimal UI. Real motion. No fake “luxury” stickers.
         </p>
 
         <div class="hero-cta">
@@ -85,16 +91,16 @@
             <div class="metric-value" id="api-status">Checking…</div>
           </div>
           <div class="metric glass-soft">
-            <div class="metric-label">Products</div>
+            <div class="metric-label">Featured loaded</div>
             <div class="metric-value" id="product-count">—</div>
           </div>
         </div>
 
         <div class="hero-outline" aria-hidden="true"></div>
+        <div class="hero-highlight" aria-hidden="true"></div>
       </div>
     </section>
 
-    <!-- Featured -->
     <section class="section">
       <div class="section-head">
         <h2>Featured</h2>
@@ -102,62 +108,45 @@
       </div>
 
       <div id="featured-grid" class="grid">
-        <!-- populated by JS -->
+        <div class="skeleton glass-soft"></div>
+        <div class="skeleton glass-soft"></div>
         <div class="skeleton glass-soft"></div>
         <div class="skeleton glass-soft"></div>
       </div>
     </section>
 
-    <!-- Bottom nav -->
     <nav class="bottom-nav glass" aria-label="Bottom Navigation">
-      <a class="nav-item active" href="./index.html">
-        <span class="nav-ico">⌂</span>
-        <span>Home</span>
-      </a>
-      <a class="nav-item" href="./catalog.html">
-        <span class="nav-ico">★</span>
-        <span>Catalog</span>
-      </a>
-      <a class="nav-item" href="./cart.html">
-        <span class="nav-ico">🛒</span>
-        <span>Cart</span>
-      </a>
-      <a class="nav-item" href="./account.html">
-        <span class="nav-ico">👤</span>
-        <span>Account</span>
-      </a>
+      <a class="nav-item active" href="./index.html"><span class="nav-ico">⌂</span><span>Home</span></a>
+      <a class="nav-item" href="./catalog.html"><span class="nav-ico">★</span><span>Catalog</span></a>
+      <a class="nav-item" href="./cart.html"><span class="nav-ico">🛒</span><span>Cart</span></a>
+      <a class="nav-item" href="./account.html"><span class="nav-ico">👤</span><span>Account</span></a>
     </nav>
   </main>
 
   <script>
-    // ===== Shopify Storefront config (PUBLIC token only) =====
     const SHOPIFY_DOMAIN = "xfkvxx-iz.myshopify.com";
     const STOREFRONT_TOKEN = "639111507512d9723d5efdd3fd6a8152";
     const STOREFRONT_API_VERSION = "2026-01";
 
     const endpoint = `https://${SHOPIFY_DOMAIN}/api/${STOREFRONT_API_VERSION}/graphql.json`;
 
-    // Service worker (keep it, but caching can be annoying while iterating)
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
         navigator.serviceWorker.register("./sw.js").catch(() => {});
       });
     }
 
-    // Cart badge from localStorage (works with your existing cart logic)
     function updateCartBadge() {
       try {
         const cart = JSON.parse(localStorage.getItem("adiconiq-cart") || "[]");
         const count = cart.reduce((t, i) => t + (i.quantity || 0), 0);
-        const badges = document.querySelectorAll("#cart-count");
-        badges.forEach(b => {
-          if (count > 0) { b.textContent = String(count); b.classList.remove("hidden"); }
-          else { b.classList.add("hidden"); }
-        });
+        const b = document.getElementById("cart-count");
+        if (!b) return;
+        if (count > 0) { b.textContent = String(count); b.classList.remove("hidden"); }
+        else { b.classList.add("hidden"); }
       } catch (_) {}
     }
 
-    // Shopify fetch helper
     async function storefront(query, variables = {}) {
       const res = await fetch(endpoint, {
         method: "POST",
@@ -172,7 +161,6 @@
       return json.data;
     }
 
-    // Featured products (clean, real images)
     async function loadFeatured() {
       const grid = document.getElementById("featured-grid");
       const apiStatus = document.getElementById("api-status");
@@ -183,14 +171,9 @@
           products(first:$first, sortKey:BEST_SELLING){
             edges{
               node{
-                id
-                title
-                handle
-                availableForSale
+                id title handle availableForSale
                 featuredImage{ url altText }
-                priceRange{
-                  minVariantPrice{ amount currencyCode }
-                }
+                priceRange{ minVariantPrice{ amount currencyCode } }
               }
             }
           }
@@ -198,8 +181,9 @@
       `;
 
       try {
-        const data = await storefront(query, { first: 6 });
+        const data = await storefront(query, { first: 8 }); // more than 6
         const items = (data.products.edges || []).map(e => e.node);
+
         apiStatus.textContent = "Online";
         apiStatus.classList.add("ok");
         productCount.textContent = String(items.length);
@@ -214,8 +198,9 @@
           return `
             <a class="card glass-soft" href="./catalog.html?handle=${encodeURIComponent(p.handle)}">
               <div class="card-media">
-                ${img ? `<img loading="lazy" src="${img}" alt="${alt}">` : `<div class="img-fallback"></div>`}
+                ${img ? `<img loading="lazy" src="${img}" alt="${escapeHtml(alt)}">` : `<div class="img-fallback"></div>`}
                 <div class="bloom" aria-hidden="true"></div>
+                <div class="spec" aria-hidden="true"></div>
               </div>
               <div class="card-body">
                 <div class="card-title">${escapeHtml(p.title || "")}</div>
@@ -235,24 +220,15 @@
         grid.innerHTML = `
           <div class="error glass-soft">
             <div class="error-title">Couldn’t load products</div>
-            <div class="error-sub">This is usually token/domain/version or caching. We’ll fix it.</div>
+            <div class="error-sub">Token/domain/version/caching. The UI is fine, the data call failed.</div>
           </div>
         `;
       }
     }
 
-    // Search just redirects to catalog with query
     function wireSearch() {
       const input = document.getElementById("search-input");
       if (!input) return;
-      let t;
-      input.addEventListener("input", () => {
-        clearTimeout(t);
-        t = setTimeout(() => {
-          const q = input.value.trim();
-          // no “live filtering” on home. Just keep it clean.
-        }, 250);
-      });
       input.addEventListener("keydown", (ev) => {
         if (ev.key === "Enter") {
           const q = input.value.trim();
@@ -267,13 +243,9 @@
       }[m]));
     }
 
-    // Kickoff
     updateCartBadge();
     wireSearch();
     loadFeatured();
-
-    // Make caching less annoying while iterating:
-    // if you keep seeing old builds, open:  .../index.html?v=9
   </script>
 </body>
 </html>
