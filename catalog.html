@@ -1,386 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-<link rel="manifest" href="manifest.webmanifest">
-<meta name="theme-color" content="#1a1a1a">
-<link rel="apple-touch-icon" href="resources/icon-192.png">
-
-<title>Catalog - AD ICONIQ</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-dark: #1a1a1a;
-            --primary-light: #ffffff;
-            --accent-silver: #c0c0c0;
-            --highlight-gray: #f5f5f5;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--primary-light);
-            color: var(--primary-dark);
-        }
-        
-        .font-display { font-family: 'Playfair Display', serif; }
-        .font-accent { font-family: 'Montserrat', sans-serif; }
-        
-        .search-bar {
-            background: white;
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            padding: 12px 16px;
-            transition: border-color 0.3s ease;
-        }
-        
-        .search-bar:focus {
-            outline: none;
-            border-color: var(--primary-dark);
-        }
-        
-        .filter-chip {
-            background: #f0f0f0;
-            color: #666;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-        }
-        
-        .filter-chip.active {
-            background: var(--primary-dark);
-            color: white;
-        }
-        
-        .product-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-        }
-        
-        .product-card:active {
-            transform: scale(0.98);
-        }
-        
-        .btn-primary {
-            background: var(--primary-dark);
-            color: var(--primary-light);
-            border-radius: 8px;
-            padding: 8px 16px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        
-        .btn-primary:hover {
-            background: #333;
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: var(--primary-dark);
-            border: 2px solid var(--primary-dark);
-            border-radius: 8px;
-            padding: 6px 14px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        
-        .btn-secondary:hover {
-            background: var(--primary-dark);
-            color: var(--primary-light);
-        }
-        
-        .nav-bottom {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(0,0,0,0.1);
-            z-index: 1000;
-            padding: 8px 0 calc(8px + env(safe-area-inset-bottom));
-        }
-        
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 8px;
-            color: #666;
-            text-decoration: none;
-            font-size: 10px;
-            font-family: 'Montserrat', sans-serif;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-item.active {
-            color: var(--primary-dark);
-        }
-        
-        .nav-icon {
-            width: 24px;
-            height: 24px;
-            margin-bottom: 4px;
-        }
-        
-        .cart-badge {
-            position: absolute;
-            top: -4px;
-            right: -4px;
-            background: #ff4444;
-            color: white;
-            border-radius: 50%;
-            width: 16px;
-            height: 16px;
-            font-size: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-        }
-        
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .modal-content {
-            background: white;
-            border-radius: 16px;
-            max-width: 90vw;
-            max-height: 90vh;
-            overflow-y: auto;
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-        }
-        
-        .modal.active .modal-content {
-            transform: scale(1);
-        }
-        
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        
-        .price-range {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 100%;
-            height: 4px;
-            background: #e0e0e0;
-            border-radius: 2px;
-            outline: none;
-        }
-        
-        .price-range::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            background: var(--primary-dark);
-            border-radius: 50%;
-            cursor: pointer;
-        }
-        
-        .price-range::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            background: var(--primary-dark);
-            border-radius: 50%;
-            cursor: pointer;
-            border: none;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Catalog • AD ICONIQ</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./styles.css">
+  <meta name="theme-color" content="#0b0b0d" />
 </head>
-<body class="pb-20">
-    <!-- Header -->
-    <header class="sticky top-0 bg-white border-b border-gray-200 z-50 px-6 py-4">
-        <div class="flex items-center justify-between">
-            <h1 class="font-display text-2xl font-bold">Catalog</h1>
-            <div class="flex items-center space-x-4">
-                <button onclick="toggleFilters()" class="p-2">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Search Bar -->
-        <div class="mt-4">
-            <input type="text" id="search-input" placeholder="Search products..." 
-                   class="search-bar w-full" onkeyup="searchProducts()">
-        </div>
-    </header>
+<body>
+  <header class="topbar">
+    <a class="pill" href="./index.html">←</a>
+    <div class="brandName">Catalog</div>
+    <a class="pill" href="./cart.html">Cart <span id="cart-count" class="badge hidden">0</span></a>
+  </header>
 
-    <!-- Filter Chips -->
-    <section class="px-6 py-4 bg-gray-50 border-b border-gray-200">
-        <div class="flex space-x-2 overflow-x-auto pb-2">
-            <button class="filter-chip active" onclick="filterProducts('all', this)">All</button>
-            <button class="filter-chip" onclick="filterProducts('mens', this)">Men's</button>
-            <button class="filter-chip" onclick="filterProducts('womens', this)">Women's</button>
-            <button class="filter-chip" onclick="filterProducts('accessories', this)">Accessories</button>
-            <button class="filter-chip" onclick="filterProducts('footwear', this)">Footwear</button>
-        </div>
-    </section>
-
-    <!-- Products Grid -->
-    <section class="px-6 py-6">
-        <div id="products-grid" class="grid grid-cols-2 gap-4">
-            <!-- Products will be loaded here -->
-        </div>
-        
-        <div id="loading" class="text-center py-8 hidden">
-            <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
-            <p class="mt-2 text-gray-600">Loading more products...</p>
-        </div>
-    </section>
-
-    <!-- Product Modal -->
-    <div id="product-modal" class="modal">
-        <div class="modal-content p-6 m-4">
-            <div class="flex justify-between items-center mb-4">
-                <h3 id="modal-title" class="font-display text-2xl font-bold"></h3>
-                <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                    </svg>
-                </button>
-            </div>
-            
-            <div id="modal-content">
-                <!-- Modal content will be loaded here -->
-            </div>
-        </div>
+  <main class="container">
+    <div class="filters">
+      <input id="search" class="input" placeholder="Search products…" />
+      <select id="sort" class="input">
+        <option value="featured">Sort: Featured</option>
+        <option value="price-asc">Price: Low → High</option>
+        <option value="price-desc">Price: High → Low</option>
+        <option value="title-asc">Title: A → Z</option>
+      </select>
     </div>
 
-    <!-- Filter Modal -->
-    <div id="filter-modal" class="modal">
-        <div class="modal-content p-6 m-4 max-w-md">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="font-display text-xl font-bold">Filters</h3>
-                <button onclick="toggleFilters()" class="text-gray-500 hover:text-gray-700">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                    </svg>
-                </button>
-            </div>
-            
-            <div class="space-y-6">
-                <!-- Price Range -->
-                <div>
-                    <h4 class="font-semibold mb-3">Price Range</h4>
-                    <div class="space-y-3">
-                        <input type="range" id="price-range" class="price-range" min="0" max="200" value="200" onchange="updatePriceFilter()">
-                        <div class="flex justify-between text-sm text-gray-600">
-                            <span>$0</span>
-                            <span id="max-price">$200+</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Size Filter -->
-                <div>
-                    <h4 class="font-semibold mb-3">Size</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <button class="filter-chip" onclick="toggleSizeFilter(this, 'XS')">XS</button>
-                        <button class="filter-chip" onclick="toggleSizeFilter(this, 'S')">S</button>
-                        <button class="filter-chip" onclick="toggleSizeFilter(this, 'M')">M</button>
-                        <button class="filter-chip" onclick="toggleSizeFilter(this, 'L')">L</button>
-                        <button class="filter-chip" onclick="toggleSizeFilter(this, 'XL')">XL</button>
-                    </div>
-                </div>
-                
-                <!-- Color Filter -->
-                <div>
-                    <h4 class="font-semibold mb-3">Color</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <button class="filter-chip" onclick="toggleColorFilter(this, 'Black')">Black</button>
-                        <button class="filter-chip" onclick="toggleColorFilter(this, 'White')">White</button>
-                        <button class="filter-chip" onclick="toggleColorFilter(this, 'Blue')">Blue</button>
-                        <button class="filter-chip" onclick="toggleColorFilter(this, 'Gray')">Gray</button>
-                        <button class="filter-chip" onclick="toggleColorFilter(this, 'Navy')">Navy</button>
-                    </div>
-                </div>
-                
-                <div class="flex space-x-3 pt-4">
-                    <button onclick="clearFilters()" class="btn-secondary flex-1">Clear All</button>
-                    <button onclick="applyFilters()" class="btn-primary flex-1">Apply</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div id="products-grid" class="grid"></div>
+    <div id="products-loading" class="muted">Loading products…</div>
+    <div id="products-error" class="error hidden"></div>
+  </main>
 
-    <!-- Bottom Navigation -->
-    <nav class="nav-bottom">
-        <div class="flex justify-around items-center py-2">
-            <a href="index.html" class="nav-item">
-                <svg class="nav-icon" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                </svg>
-                Home
-            </a>
-            <a href="catalog.html" class="nav-item active">
-                <svg class="nav-icon" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
-                Catalog
-            </a>
-            <a href="cart.html" class="nav-item relative">
-                <svg class="nav-icon" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
-                </svg>
-                <span id="cart-count" class="cart-badge hidden">0</span>
-                Cart
-            </a>
-            <a href="account.html" class="nav-item">
-                <svg class="nav-icon" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                </svg>
-                Account
-            </a>
-        </div>
-    </nav>
+  <nav class="tabbar">
+    <a class="tab" href="./index.html">Home</a>
+    <a class="tab active" href="./catalog.html">Catalog</a>
+    <a class="tab" href="./cart.html">Cart <span id="cart-count-2" class="badge hidden">0</span></a>
+    <a class="tab" href="./account.html">Account</a>
+  </nav>
 
-    <script src="main.js"></script>
+  <script src="./main.js"></script>
 </body>
 </html>
