@@ -1,57 +1,98 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>AD ICONIQ</title>
-  <link rel="manifest" href="./manifest.webmanifest">
-  <link rel="stylesheet" href="./styles.css">
-  <meta name="theme-color" content="#0b0b0d" />
+  <link rel="stylesheet" href="./styles.css"/>
 </head>
 <body>
-  <header class="topbar">
-    <div class="brand">
-      <div class="logo">AD</div>
-      <div>
-        <div class="brandName">AD ICONIQ</div>
-        <div class="brandSub">Official Store</div>
-      </div>
-    </div>
-    <div class="topActions">
-      <a class="pill" href="./catalog.html">Shop</a>
-      <a class="pill" href="./cart.html">Cart <span id="cart-count" class="badge hidden">0</span></a>
-    </div>
-  </header>
+  <div class="glow-orb orb-a"></div>
+  <div class="glow-orb orb-b"></div>
+  <div class="glow-orb orb-c"></div>
 
-  <main class="container">
-    <section class="hero">
-      <div class="heroInner">
-        <h1>Luxury. Motion. Identity.</h1>
-        <p>Real products pulled directly from your Shopify store. No fake catalog. No missing images.</p>
-        <div class="heroBtns">
-          <a class="btnPrimary" href="./catalog.html">Open Catalog</a>
-          <button class="btnGhost" id="installBtn" style="display:none;">Install App</button>
+  <div class="app">
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <div class="brand">
+          <div class="logo"></div>
+          <div class="brand-title">AD ICONIQ</div>
         </div>
-      </div>
-    </section>
 
-    <section class="section">
-      <div class="sectionHeader">
-        <h2>Featured Products</h2>
-        <a href="./catalog.html" class="link">View all</a>
-      </div>
-      <div id="featured-grid" class="grid"></div>
-      <div id="featured-loading" class="muted">Loading products…</div>
-      <div id="featured-error" class="error hidden"></div>
-    </section>
-  </main>
+        <div class="search">
+          <span style="opacity:.7">⌕</span>
+          <input id="search-input" placeholder="Search the catalog…" />
+        </div>
 
-  <nav class="tabbar">
-    <a class="tab active" href="./index.html">Home</a>
-    <a class="tab" href="./catalog.html">Catalog</a>
-    <a class="tab" href="./cart.html">Cart <span id="cart-count-2" class="badge hidden">0</span></a>
-    <a class="tab" href="./account.html">Account</a>
-  </nav>
+        <a class="pill" href="./catalog.html">Shop</a>
+      </div>
+    </header>
+
+    <main class="container hero">
+      <div class="hero-grid">
+        <section class="glass">
+          <div class="glass-inner">
+            <div class="kicker">
+              <span class="badge">LUX</span>
+              <span>Glass + Neon Edition</span>
+            </div>
+            <h1 class="h1">AD ICONIQ <span style="font-weight:800">Store</span></h1>
+            <p class="sub">
+              Premium glassmorphism UI with neon gradients. Products load from Shopify Storefront API.
+              Cart persists on device.
+            </p>
+            <div class="cta-row">
+              <button class="btn btn-primary" onclick="window.location.href='./catalog.html'">Open Catalog</button>
+              <button class="btn" onclick="window.location.href='./cart.html'">View Cart</button>
+            </div>
+          </div>
+        </section>
+
+        <aside class="glass feature">
+          <div class="glass-inner">
+            <div class="mini">Status</div>
+            <div class="metric">
+              <div class="mbox">
+                <div class="label">Storefront API</div>
+                <div class="value" id="api-status">Checking…</div>
+              </div>
+              <div class="mbox">
+                <div class="label">Products Loaded</div>
+                <div class="value" id="count-status">0</div>
+              </div>
+            </div>
+
+            <div style="margin-top:14px" class="notice">
+              If this still looks “the same,” you’re viewing a cached build.
+              Open the site with: <b>?v=1</b>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="section-title">Featured</div>
+      <div id="products-grid" class="grid"></div>
+    </main>
+
+    <nav class="bottom-nav">
+      <div class="container nav-inner">
+        <a class="nav-link active" href="./index.html">
+          <span class="icon">⌂</span><span>Home</span>
+        </a>
+        <a class="nav-link" href="./catalog.html">
+          <span class="icon">★</span><span>Catalog</span>
+        </a>
+        <a class="nav-link" href="./cart.html">
+          <span class="icon">🛒</span><span>Cart <span id="cart-count"></span></span>
+        </a>
+        <a class="nav-link" href="./account.html">
+          <span class="icon">👤</span><span>Account</span>
+        </a>
+      </div>
+    </nav>
+
+    <div id="toast" class="toast"></div>
+  </div>
 
   <script src="./main.js"></script>
 </body>
