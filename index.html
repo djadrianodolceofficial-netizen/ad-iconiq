@@ -3,33 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADICONIQ | Luxury In Motion</title>
+    <title>ADICONIQ App</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="manifest" href="manifest.webmanifest">
 </head>
 <body>
 
-    <header class="glass-card">
-        <img src="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO/main/logo.png" alt="ADICONIQ" class="logo">
+    <header style="padding: 50px 20px; text-align: center;">
+        <img src="logo.png" alt="ADICONIQ" style="max-width: 250px; filter: invert(1);">
+        <p style="letter-spacing: 5px; color: #c5a059; font-size: 0.8rem; margin-top: 10px;">LUXURY IN MOTION</p>
     </header>
 
-    <main>
-        <div class="product-grid" id="product-container">
-            </div>
-    </main>
-
-    <nav class="glass-card" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; height: 60px; display: flex; justify-content: space-around; align-items: center;">
-        <span>🏠</span>
-        <span>🔍</span>
-        <span>🛒</span>
-        <span>👤</span>
-    </nav>
+    <div id="product-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; padding: 0 40px 100px 40px;">
+        </div>
 
     <script src="main.js"></script>
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js');
-        }
-    </script>
 </body>
 </html>
