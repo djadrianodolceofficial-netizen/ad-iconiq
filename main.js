@@ -2,7 +2,7 @@
 // SHOPIFY CONFIG (EDIT THESE)
 // ===========================
 const SHOPIFY_DOMAIN = "xfkvxx-iz.myshopify.com";
-const STOREFRONT_TOKEN = "PASTE_YOUR_PUBLIC_ACCESS_TOKEN_HERE";
+const STOREFRONT_TOKEN = "639111507512d9723d5efdd3fd6a8152";
 const STOREFRONT_API_VERSION = "2026-01";
 
 // ===========================
