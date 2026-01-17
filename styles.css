@@ -476,3 +476,135 @@ body{
   display:none;
 }
 .toast.show{display:block}
+
+
+/* =========================
+   MOBILE FIX: HERO + CHIPS
+   ========================= */
+
+.hero {
+  padding: 18px 16px;
+}
+
+.hero-card {
+  padding: 18px !important;
+}
+
+/* The little "LUX / GLASS + NEON EDITION" row */
+.hero-badges,
+.badges,
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.badge,
+.chip,
+.pill {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px !important;
+  letter-spacing: .12em;
+  padding: 8px 12px !important;
+  border-radius: 999px;
+}
+
+/* Main hero title */
+.hero h1,
+.hero-title {
+  font-size: clamp(26px, 7vw, 42px) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.02em;
+  margin: 6px 0 10px !important;
+  word-break: break-word;
+}
+
+/* Hero description */
+.hero p,
+.hero-subtitle,
+.hero-desc {
+  font-size: 14px !important;
+  line-height: 1.35 !important;
+  opacity: .88;
+  margin: 0 0 14px !important;
+
+  /* Prevent ugly overflow */
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+/* Buttons row */
+.hero-actions,
+.hero-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.hero-actions .btn,
+.hero-buttons .btn,
+.hero-actions button,
+.hero-buttons button {
+  flex: 1 1 140px;
+  min-width: 140px;
+}
+
+/* =========================
+   HEADER FIX (logo + search)
+   ========================= */
+
+.header,
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+}
+
+.header .search,
+.topbar .search {
+  flex: 1 1 auto;
+  min-width: 0; /* THIS prevents flex overflow on iPhone */
+}
+
+.header input,
+.topbar input {
+  width: 100%;
+  font-size: 14px !important;
+}
+
+/* =========================
+   STATUS CARDS FIX
+   ========================= */
+
+.status-grid,
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.status-card,
+.stat-card {
+  padding: 14px !important;
+}
+
+.status-card p,
+.stat-card p {
+  font-size: 12px !important;
+  line-height: 1.25 !important;
+  opacity: .85;
+}
+
+/* iPhone extra tight */
+@media (max-width: 390px) {
+  .status-grid,
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}
