@@ -15,7 +15,19 @@
   --danger:#ff3b3b;
   --ok:#35ff9a;
 }
-
+.logo-wrap{
+  width:44px;height:44px;
+  border-radius:18px;
+  display:grid;
+  place-items:center;
+  background: rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:
+    0 18px 55px rgba(0,0,0,.55),
+    0 0 0 1px rgba(255,255,255,.08) inset;
+  overflow:hidden;
+}
+.logo-svg{width:44px;height:44px;display:block}
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
