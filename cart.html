@@ -1,52 +1,53 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Cart • AD ICONIQ</title>
-  <link rel="manifest" href="./manifest.webmanifest">
-  <link rel="stylesheet" href="./styles.css">
-  <meta name="theme-color" content="#0b0b0d" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>AD ICONIQ | Cart</title>
+  <link rel="stylesheet" href="./styles.css"/>
 </head>
 <body>
-  <header class="topbar">
-    <a class="pill" href="./catalog.html">←</a>
-    <div class="brandName">Cart</div>
-    <a class="pill" href="./account.html">Account</a>
-  </header>
+  <div class="glow-orb orb-a"></div>
+  <div class="glow-orb orb-b"></div>
+  <div class="glow-orb orb-c"></div>
 
-  <main class="container">
-    <div id="cart-empty" class="card hidden">
-      <h2>Your cart is empty</h2>
-      <p class="muted">Pick something expensive. It builds character.</p>
-      <a class="btnPrimary" href="./catalog.html">Shop now</a>
-    </div>
-
-    <div id="cart-wrap" class="hidden">
-      <div id="cart-items" class="stack"></div>
-
-      <div class="card">
-        <div class="row">
-          <span class="muted">Subtotal</span>
-          <strong id="subtotal">$0.00</strong>
-        </div>
-        <div class="row">
-          <span class="muted">Checkout</span>
-          <span class="muted">Handled by Shopify (orders + fulfillment)</span>
-        </div>
-        <button id="checkoutBtn" class="btnPrimary">Checkout on Shopify</button>
-        <button id="clearBtn" class="btnGhost">Clear cart</button>
-        <div id="checkoutError" class="error hidden"></div>
+  <div class="app">
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <div class="brand"><div class="logo"></div><div class="brand-title">AD ICONIQ</div></div>
+        <div class="search"><span style="opacity:.7">⌕</span><input id="search-input" placeholder="Search…" /></div>
+        <a class="pill" href="./catalog.html">Catalog</a>
       </div>
-    </div>
-  </main>
+    </header>
 
-  <nav class="tabbar">
-    <a class="tab" href="./index.html">Home</a>
-    <a class="tab" href="./catalog.html">Catalog</a>
-    <a class="tab active" href="./cart.html">Cart <span id="cart-count-2" class="badge hidden">0</span></a>
-    <a class="tab" href="./account.html">Account</a>
-  </nav>
+    <main class="container hero">
+      <section class="glass">
+        <div class="glass-inner">
+          <div class="kicker"><span class="badge">CART</span><span>Luxury checkout shell</span></div>
+          <h1 class="h1">Your Cart</h1>
+          <p class="sub">This is a PWA demo cart. For real payments you must redirect to Shopify checkout (next step after this UI is fixed).</p>
+          <div class="cta-row">
+            <button class="btn btn-primary" onclick="goToShopifyCheckout()">Go to Shopify Checkout</button>
+            <button class="btn" onclick="clearCart()">Clear Cart</button>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-title">Items</div>
+      <div id="cart-grid" class="grid"></div>
+    </main>
+
+    <nav class="bottom-nav">
+      <div class="container nav-inner">
+        <a class="nav-link" href="./index.html"><span class="icon">⌂</span><span>Home</span></a>
+        <a class="nav-link" href="./catalog.html"><span class="icon">★</span><span>Catalog</span></a>
+        <a class="nav-link active" href="./cart.html"><span class="icon">🛒</span><span>Cart <span id="cart-count"></span></span></a>
+        <a class="nav-link" href="./account.html"><span class="icon">👤</span><span>Account</span></a>
+      </div>
+    </nav>
+
+    <div id="toast" class="toast"></div>
+  </div>
 
   <script src="./main.js"></script>
 </body>
