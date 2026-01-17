@@ -15,7 +15,56 @@
     <header class="topbar">
       <div class="container topbar-inner">
         <div class="brand">
-          <div class="logo"></div>
+          <div class="logo-wrap" aria-label="AD ICONIQ logo">
+  <svg class="logo-svg" viewBox="0 0 64 64" role="img">
+    <defs>
+      <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#ff6a00"/>
+        <stop offset="0.55" stop-color="#ff2bd1"/>
+        <stop offset="1" stop-color="#2dfcff"/>
+      </linearGradient>
+      <radialGradient id="g2" cx="30%" cy="25%" r="70%">
+        <stop offset="0" stop-color="rgba(255,255,255,.45)"/>
+        <stop offset="0.35" stop-color="rgba(255,255,255,.12)"/>
+        <stop offset="1" stop-color="rgba(255,255,255,0)"/>
+      </radialGradient>
+      <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="3" result="b"/>
+        <feColorMatrix in="b" type="matrix"
+          values="1 0 0 0 0
+                  0 1 0 0 0
+                  0 0 1 0 0
+                  0 0 0 0.9 0" result="g"/>
+        <feMerge>
+          <feMergeNode in="g"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
+
+    <!-- glass base -->
+    <rect x="6" y="6" width="52" height="52" rx="18"
+      fill="rgba(255,255,255,.10)"
+      stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
+
+    <!-- neon rim -->
+    <rect x="6.8" y="6.8" width="50.4" height="50.4" rx="17.2"
+      fill="none" stroke="url(#g1)" stroke-width="1.4" filter="url(#softGlow)" opacity="0.85"/>
+
+    <!-- highlight -->
+    <path d="M14 16 C 26 8, 44 10, 50 20" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- inner sheen -->
+    <rect x="8" y="8" width="48" height="48" rx="16" fill="url(#g2)" opacity="0.9"/>
+
+    <!-- AD letters -->
+    <text x="32" y="39" text-anchor="middle"
+      font-size="18" font-weight="900"
+      font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial"
+      fill="rgba(255,255,255,.92)"
+      style="letter-spacing:1px">AD</text>
+  </svg>
+</div>
           <div class="brand-title">AD ICONIQ</div>
         </div>
         <div class="search">
