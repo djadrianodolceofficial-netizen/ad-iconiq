@@ -1,117 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AD ICONIQ — Official Store</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AD ICONIQ — Official Store</title>
 
-  <!-- iOS / PWA polish -->
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<!-- ===== LUXURY GLASS + NEON UI ===== -->
+<style>
+:root{
+  --glass-bg: rgba(255,255,255,0.08);
+  --glass-border: rgba(255,255,255,0.25);
+  --neon-pink: #ff4fd8;
+  --neon-orange: #ff8a3d;
+  --neon-purple: #7a5cff;
+  --bg-dark: #050508;
+}
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="styles.css" />
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Inter",sans-serif;
+  background:
+    radial-gradient(1200px 600px at 20% -10%, #ff4fd833, transparent 60%),
+    radial-gradient(1000px 600px at 90% 10%, #7a5cff33, transparent 60%),
+    #050508;
+  color:#fff;
+  min-height:100vh;
+}
+
+header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:18px 20px;
+  backdrop-filter:blur(24px);
+  background:linear-gradient(90deg,#ff8a3d44,#7a5cff44);
+  border-bottom:1px solid var(--glass-border);
+}
+
+.logo{
+  width:44px;
+  height:44px;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--neon-orange),var(--neon-pink));
+  display:grid;
+  place-items:center;
+  font-weight:800;
+  box-shadow:0 0 30px #ff4fd866;
+}
+
+header h1{
+  font-size:18px;
+  font-weight:700;
+}
+
+.hero{
+  margin:24px;
+  padding:28px;
+  border-radius:28px;
+  background:
+    linear-gradient(135deg,#ff8a3d55,#7a5cff55),
+    var(--glass-bg);
+  backdrop-filter:blur(28px);
+  border:1px solid var(--glass-border);
+  box-shadow:0 40px 120px #000;
+}
+
+.badges{
+  display:flex;
+  gap:10px;
+  margin-bottom:14px;
+}
+
+.badge{
+  padding:6px 14px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:700;
+  background:linear-gradient(135deg,var(--neon-orange),var(--neon-pink));
+}
+
+.hero h2{
+  font-size:38px;
+  line-height:1.05;
+  margin-bottom:14px;
+}
+
+.hero p{
+  color:#e5e5e5;
+  max-width:520px;
+}
+
+.hero-actions{
+  display:flex;
+  gap:14px;
+  margin-top:22px;
+}
+
+.btn{
+  padding:14px 22px;
+  border-radius:999px;
+  border:none;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.btn-primary{
+  background:linear-gradient(135deg,var(--neon-orange),var(--neon-pink));
+  box-shadow:0 0 40px #ff4fd866;
+}
+
+.btn-glass{
+  background:var(--glass-bg);
+  color:#fff;
+  border:1px solid var(--glass-border);
+  backdrop-filter:blur(20px);
+}
+
+.section{
+  margin:40px 24px;
+}
+
+.section h3{
+  font-size:14px;
+  letter-spacing:4px;
+  opacity:.7;
+  margin-bottom:18px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:18px;
+}
+
+.card{
+  background:var(--glass-bg);
+  backdrop-filter:blur(24px);
+  border:1px solid var(--glass-border);
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 30px 80px #000;
+}
+
+.card img{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+}
+
+.card-body{
+  padding:14px;
+}
+
+.card-body h4{
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+.price{
+  font-weight:800;
+  background:linear-gradient(135deg,var(--neon-orange),var(--neon-pink));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  padding:14px;
+  background:rgba(0,0,0,0.55);
+  backdrop-filter:blur(20px);
+  display:flex;
+  justify-content:space-around;
+  border-top:1px solid var(--glass-border);
+}
+footer span{opacity:.8}
+</style>
 </head>
 
 <body>
 
-  <!-- =========================
-       HEADER
-       ========================= -->
-  <header>
-    <div class="header-inner">
-      <div class="logo">AD</div>
-      <div>
-        <strong>AD ICONIQ</strong><br />
-        <span style="font-size:12px; opacity:.65;">Official Store</span>
+<header>
+  <div class="logo">AD</div>
+  <h1>AD ICONIQ</h1>
+</header>
+
+<section class="hero">
+  <div class="badges">
+    <div class="badge">LUX</div>
+    <div class="badge">GLASS</div>
+    <div class="badge">NEON</div>
+  </div>
+  <h2>Luxury.<br>Motion.<br>Identity.</h2>
+  <p>
+    Ultra-luxury glass commerce built for AD ICONIQ.
+    Real products loaded live from Shopify.
+  </p>
+  <div class="hero-actions">
+    <button class="btn btn-primary" onclick="scrollToFeatured()">Shop Featured</button>
+    <button class="btn btn-glass" onclick="location.href='catalog.html'">Full Catalog</button>
+  </div>
+</section>
+
+<section class="section" id="featured">
+  <h3>FEATURED</h3>
+  <div class="grid" id="products"></div>
+</section>
+
+<footer>
+  <span>Home</span>
+  <span onclick="location.href='catalog.html'">Catalog</span>
+  <span onclick="location.href='cart.html'">Cart</span>
+  <span onclick="location.href='account.html'">Account</span>
+</footer>
+
+<!-- ===== SHOPIFY STOREFRONT API ===== -->
+<script>
+const SHOP = "xfkvxx-iz.myshopify.com";
+const TOKEN = "639111507512d9723d5efdd3fd6a8152";
+const API = "2026-01";
+
+async function loadProducts(){
+  const res = await fetch(`https://${SHOP}/api/${API}/graphql.json`,{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json",
+      "X-Shopify-Storefront-Access-Token":TOKEN
+    },
+    body:JSON.stringify({
+      query:`
+      {
+        products(first:8){
+          edges{
+            node{
+              id
+              title
+              images(first:1){edges{node{url}}}
+              priceRange{minVariantPrice{amount}}
+            }
+          }
+        }
+      }`
+    })
+  });
+
+  const json = await res.json();
+  const grid = document.getElementById("products");
+
+  grid.innerHTML = json.data.products.edges.map(p=>{
+    const img = p.node.images.edges[0]?.node.url || "";
+    return `
+      <div class="card">
+        <img src="${img}">
+        <div class="card-body">
+          <h4>${p.node.title}</h4>
+          <div class="price">$${p.node.priceRange.minVariantPrice.amount}</div>
+        </div>
       </div>
-    </div>
-  </header>
+    `;
+  }).join("");
+}
 
-  <!-- =========================
-       HERO
-       ========================= -->
-  <section class="hero">
-    <div class="hero-card">
+function scrollToFeatured(){
+  document.getElementById("featured").scrollIntoView({behavior:"smooth"});
+}
 
-      <div class="hero-tags">
-        <span class="hero-tag">LUX</span>
-        <span class="hero-tag">GLASS</span>
-        <span class="hero-tag">NEON</span>
-      </div>
-
-      <h1>
-        Luxury.<br />
-        Motion.<br />
-        Identity.
-      </h1>
-
-      <p>
-        Ultra-luxury glass commerce built for AD ICONIQ.
-        Real products pulled live from Shopify.
-        Designed for dominance, not templates.
-      </p>
-
-      <div class="hero-actions">
-        <button class="btn-primary" onclick="location.href='catalog.html'">
-          Open Catalog
-        </button>
-        <button class="btn-glass" onclick="location.href='cart.html'">
-          View Cart
-        </button>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- =========================
-       STATUS
-       ========================= -->
-  <section class="status-grid">
-
-    <div class="status-card">
-      <h4>STOREFRONT API</h4>
-      <strong>ONLINE</strong>
-    </div>
-
-    <div class="status-card">
-      <h4>PRODUCTS</h4>
-      <strong>LIVE</strong>
-    </div>
-
-  </section>
-
-  <!-- =========================
-       FEATURED (VISUAL PLACEHOLDER)
-       ========================= -->
-  <section style="padding: 10px 16px 120px;">
-    <h3 style="letter-spacing:.18em; opacity:.7; font-size:13px;">
-      FEATURED
-    </h3>
-
-    <div style="
-      margin-top:14px;
-      padding:26px;
-      border-radius:26px;
-      background: rgba(255,255,255,.08);
-      backdrop-filter: blur(26px);
-      border:1px solid rgba(255,255,255,.25);
-      text-align:center;
-      opacity:.6;
-    ">
-      Product grid loads in Catalog
-    </div>
-  </section>
-
-  <!-- =========================
-       BOTTOM NAV
-       ========================= -->
-  <nav class="bottom-nav">
-    <span onclick="location.href='index.html'">Home</span>
-    <span onclick="location.href='catalog.html'">Catalog</span>
-    <span onclick="location.href='cart.html'">Cart</span>
-    <span onclick="location.href='account.html'">Account</span>
-  </nav>
+loadProducts();
+</script>
 
 </body>
 </html>
