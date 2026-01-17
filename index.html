@@ -1,150 +1,117 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>AD ICONIQ</title>
-  <link rel="stylesheet" href="./styles.css?v=9"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AD ICONIQ — Official Store</title>
+
+  <!-- iOS / PWA polish -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <div class="glow-orb orb-a"></div>
-  <div class="glow-orb orb-b"></div>
-  <div class="glow-orb orb-c"></div>
 
-  <div class="app">
-    <header class="topbar">
-      <div class="container topbar-inner">
-        <div class="brand">
-          <div class="logo-wrap" aria-label="AD ICONIQ logo">
-  <svg class="logo-svg" viewBox="0 0 64 64" role="img">
-    <defs>
-      <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#ff6a00"/>
-        <stop offset="0.55" stop-color="#ff2bd1"/>
-        <stop offset="1" stop-color="#2dfcff"/>
-      </linearGradient>
-      <radialGradient id="g2" cx="30%" cy="25%" r="70%">
-        <stop offset="0" stop-color="rgba(255,255,255,.45)"/>
-        <stop offset="0.35" stop-color="rgba(255,255,255,.12)"/>
-        <stop offset="1" stop-color="rgba(255,255,255,0)"/>
-      </radialGradient>
-      <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur stdDeviation="3" result="b"/>
-        <feColorMatrix in="b" type="matrix"
-          values="1 0 0 0 0
-                  0 1 0 0 0
-                  0 0 1 0 0
-                  0 0 0 0.9 0" result="g"/>
-        <feMerge>
-          <feMergeNode in="g"/>
-          <feMergeNode in="SourceGraphic"/>
-        </feMerge>
-      </filter>
-    </defs>
-
-    <!-- glass base -->
-    <rect x="6" y="6" width="52" height="52" rx="18"
-      fill="rgba(255,255,255,.10)"
-      stroke="rgba(255,255,255,.28)" stroke-width="1.2"/>
-
-    <!-- neon rim -->
-    <rect x="6.8" y="6.8" width="50.4" height="50.4" rx="17.2"
-      fill="none" stroke="url(#g1)" stroke-width="1.4" filter="url(#softGlow)" opacity="0.85"/>
-
-    <!-- highlight -->
-    <path d="M14 16 C 26 8, 44 10, 50 20" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="2" stroke-linecap="round"/>
-
-    <!-- inner sheen -->
-    <rect x="8" y="8" width="48" height="48" rx="16" fill="url(#g2)" opacity="0.9"/>
-
-    <!-- AD letters -->
-    <text x="32" y="39" text-anchor="middle"
-      font-size="18" font-weight="900"
-      font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial"
-      fill="rgba(255,255,255,.92)"
-      style="letter-spacing:1px">AD</text>
-  </svg>
-</div>
-          <div class="brand-title">AD ICONIQ</div>
-        </div>
-
-        <div class="search">
-          <span style="opacity:.7">⌕</span>
-          <input id="search-input" placeholder="Search the catalog…" />
-        </div>
-
-        <a class="pill" href="./catalog.html">Shop</a>
+  <!-- =========================
+       HEADER
+       ========================= -->
+  <header>
+    <div class="header-inner">
+      <div class="logo">AD</div>
+      <div>
+        <strong>AD ICONIQ</strong><br />
+        <span style="font-size:12px; opacity:.65;">Official Store</span>
       </div>
-    </header>
-<p class="hero-subtitle">
-  Ultra-luxury glass UI with neon gradients. Live products pulled from your Shopify Storefront API.
-  Fast, clean, and built for AD ICONIQ.
-</p>
-    <main class="container hero">
-      <div class="hero-grid">
-        <section class="glass">
-          <div class="glass-inner">
-            <div class="kicker">
-              <span class="badge">LUX</span>
-              <span>Glass + Neon Edition</span>
-            </div>
-            <h1 class="h1">AD ICONIQ <span style="font-weight:800">Store</span></h1>
-            <p class="sub">
-              Premium glassmorphism UI with neon gradients. Products load from Shopify Storefront API.
-              Cart persists on device.
-            </p>
-            <div class="cta-row">
-              <button class="btn btn-primary" onclick="window.location.href='./catalog.html'">Open Catalog</button>
-              <button class="btn" onclick="window.location.href='./cart.html'">View Cart</button>
-            </div>
-          </div>
-        </section>
-section>
-        <aside class="glass feature">
-          <div class="glass-inner">
-            <div class="mini">Status</div>
-            <div class="metric">
-              <div class="mbox">
-                <div class="label">Storefront API</div>
-                <div class="value" id="api-status">Checking…</div>
-              </div>
-              <div class="mbox">
-                <div class="label">Products Loaded</div>
-                <div class="value" id="count-status">0</div>
-              </div>
-            </div>
+    </div>
+  </header>
 
-            <div style="margin-top:14px" class="notice">
-              
-            </div>
-          </div>
-        </aside>
+  <!-- =========================
+       HERO
+       ========================= -->
+  <section class="hero">
+    <div class="hero-card">
+
+      <div class="hero-tags">
+        <span class="hero-tag">LUX</span>
+        <span class="hero-tag">GLASS</span>
+        <span class="hero-tag">NEON</span>
       </div>
 
-      <div class="section-title">Featured</div>
-      <div id="products-grid" class="grid"></div>
-    </main>
+      <h1>
+        Luxury.<br />
+        Motion.<br />
+        Identity.
+      </h1>
 
-    <nav class="bottom-nav">
-      <div class="container nav-inner">
-        <a class="nav-link active" href="./index.html">
-          <span class="icon">⌂</span><span>Home</span>
-        </a>
-        <a class="nav-link" href="./catalog.html">
-          <span class="icon">★</span><span>Catalog</span>
-        </a>
-        <a class="nav-link" href="./cart.html">
-          <span class="icon">🛒</span><span>Cart <span id="cart-count"></span></span>
-        </a>
-        <a class="nav-link" href="./account.html">
-          <span class="icon">👤</span><span>Account</span>
-        </a>
+      <p>
+        Ultra-luxury glass commerce built for AD ICONIQ.
+        Real products pulled live from Shopify.
+        Designed for dominance, not templates.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="location.href='catalog.html'">
+          Open Catalog
+        </button>
+        <button class="btn-glass" onclick="location.href='cart.html'">
+          View Cart
+        </button>
       </div>
-    </nav>
 
-    <div id="toast" class="toast"></div>
-  </div>
+    </div>
+  </section>
 
-  <script src="./main.js"></script>
+  <!-- =========================
+       STATUS
+       ========================= -->
+  <section class="status-grid">
+
+    <div class="status-card">
+      <h4>STOREFRONT API</h4>
+      <strong>ONLINE</strong>
+    </div>
+
+    <div class="status-card">
+      <h4>PRODUCTS</h4>
+      <strong>LIVE</strong>
+    </div>
+
+  </section>
+
+  <!-- =========================
+       FEATURED (VISUAL PLACEHOLDER)
+       ========================= -->
+  <section style="padding: 10px 16px 120px;">
+    <h3 style="letter-spacing:.18em; opacity:.7; font-size:13px;">
+      FEATURED
+    </h3>
+
+    <div style="
+      margin-top:14px;
+      padding:26px;
+      border-radius:26px;
+      background: rgba(255,255,255,.08);
+      backdrop-filter: blur(26px);
+      border:1px solid rgba(255,255,255,.25);
+      text-align:center;
+      opacity:.6;
+    ">
+      Product grid loads in Catalog
+    </div>
+  </section>
+
+  <!-- =========================
+       BOTTOM NAV
+       ========================= -->
+  <nav class="bottom-nav">
+    <span onclick="location.href='index.html'">Home</span>
+    <span onclick="location.href='catalog.html'">Catalog</span>
+    <span onclick="location.href='cart.html'">Cart</span>
+    <span onclick="location.href='account.html'">Account</span>
+  </nav>
+
 </body>
 </html>
