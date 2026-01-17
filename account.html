@@ -1,40 +1,53 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Account • AD ICONIQ</title>
-  <link rel="manifest" href="./manifest.webmanifest">
-  <link rel="stylesheet" href="./styles.css">
-  <meta name="theme-color" content="#0b0b0d" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>AD ICONIQ | Account</title>
+  <link rel="stylesheet" href="./styles.css"/>
 </head>
 <body>
-  <header class="topbar">
-    <a class="pill" href="./index.html">←</a>
-    <div class="brandName">Account</div>
-    <a class="pill" href="./catalog.html">Shop</a>
-  </header>
+  <div class="glow-orb orb-a"></div>
+  <div class="glow-orb orb-b"></div>
+  <div class="glow-orb orb-c"></div>
 
-  <main class="container">
-    <div class="card">
-      <h2>Orders</h2>
-      <p class="muted">Real orders live in Shopify. This app sends checkout to Shopify so fulfillment works normally.</p>
-      <a id="ordersLink" class="btnPrimary" target="_blank" rel="noreferrer">Open Shopify Orders (admin)</a>
-    </div>
+  <div class="app">
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <div class="brand"><div class="logo"></div><div class="brand-title">AD ICONIQ</div></div>
+        <div class="search"><span style="opacity:.7">⌕</span><input id="search-input" placeholder="Search…" /></div>
+        <a class="pill" href="./index.html">Home</a>
+      </div>
+    </header>
 
-    <div class="card">
-      <h2>Customer login</h2>
-      <p class="muted">Customers can manage orders + addresses through your Shopify account pages.</p>
-      <a id="accountLink" class="btnGhost" target="_blank" rel="noreferrer">Open Customer Account</a>
-    </div>
-  </main>
+    <main class="container hero">
+      <section class="glass">
+        <div class="glass-inner">
+          <div class="kicker"><span class="badge">ME</span><span>Local profile shell</span></div>
+          <h1 class="h1">Account</h1>
+          <p class="sub">Orders shown here are device-local. Shopify customer login requires Customer Account API setup (separate step).</p>
+          <div class="cta-row">
+            <button class="btn btn-primary" onclick="showToast('Account auth is a separate build step')">Customer Login</button>
+            <button class="btn" onclick="showToast('Coming next')">Order History</button>
+          </div>
+        </div>
+      </section>
 
-  <nav class="tabbar">
-    <a class="tab" href="./index.html">Home</a>
-    <a class="tab" href="./catalog.html">Catalog</a>
-    <a class="tab" href="./cart.html">Cart <span id="cart-count-2" class="badge hidden">0</span></a>
-    <a class="tab active" href="./account.html">Account</a>
-  </nav>
+      <div class="section-title">Device Orders</div>
+      <div id="orders-grid" class="grid"></div>
+    </main>
+
+    <nav class="bottom-nav">
+      <div class="container nav-inner">
+        <a class="nav-link" href="./index.html"><span class="icon">⌂</span><span>Home</span></a>
+        <a class="nav-link" href="./catalog.html"><span class="icon">★</span><span>Catalog</span></a>
+        <a class="nav-link" href="./cart.html"><span class="icon">🛒</span><span>Cart <span id="cart-count"></span></span></a>
+        <a class="nav-link active" href="./account.html"><span class="icon">👤</span><span>Account</span></a>
+      </div>
+    </nav>
+
+    <div id="toast" class="toast"></div>
+  </div>
 
   <script src="./main.js"></script>
 </body>
