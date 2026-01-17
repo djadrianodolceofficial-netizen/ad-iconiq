@@ -1,37 +1,38 @@
-const products = [
+const ADICONIQ_STORE = [
     {
-        id: 1,
-        name: "Luxury Motion Watch",
-        price: "$2,499",
-        image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500" // Replace with your actual product URL
+        name: "EQUUS Leather Shoulder Bag",
+        price: "$64.42",
+        category: "Luxury Accessories",
+        img: "https://adiconiq.com/cdn/shop/files/leather_bag_main.jpg"
     },
     {
-        id: 2,
-        name: "Iconic Gold Frames",
-        price: "$850",
-        image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=500" 
+        name: "VIVID MOTION Shorts",
+        price: "$44.39",
+        category: "Apparel",
+        img: "https://adiconiq.com/cdn/shop/files/vivid_shorts.jpg"
     },
-    // Add all your products here
+    {
+        name: "La Flor Azul Track Pants",
+        price: "$45.00",
+        category: "Limited Edition",
+        img: "https://adiconiq.com/cdn/shop/files/track_pants.jpg"
+    }
 ];
 
-const container = document.getElementById('product-container');
+const grid = document.getElementById('product-grid');
 
-function renderProducts() {
-    container.innerHTML = products.map(product => `
-        <div class="product-card glass-card">
-            <img src="${product.image}" class="product-image" alt="${product.name}">
+function initApp() {
+    grid.innerHTML = ADICONIQ_STORE.map(item => `
+        <div class="product-card">
+            <img src="${item.img}" alt="${item.name}">
             <div class="product-info">
-                <h3>${product.name}</h3>
-                <p style="color: #c5a059; font-weight: bold;">${product.price}</p>
-                <button class="btn-buy" onclick="addToCart(${product.id})">Add to Collection</button>
+                <small style="text-transform: uppercase; opacity: 0.6;">${item.category}</small>
+                <h2 style="font-size: 1.1rem; margin: 10px 0;">${item.name}</h2>
+                <div class="price">${item.price}</div>
+                <button class="buy-now" onclick="window.location.href='https://adiconiq.com'">Purchase</button>
             </div>
         </div>
     `).join('');
 }
 
-function addToCart(id) {
-    const product = products.find(p => p.id === id);
-    alert(`${product.name} has been added to your cart.`);
-}
-
-renderProducts();
+document.addEventListener('DOMContentLoaded', initApp);
