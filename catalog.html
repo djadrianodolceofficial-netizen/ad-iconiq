@@ -1,42 +1,65 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Catalog • AD ICONIQ</title>
-  <link rel="manifest" href="./manifest.webmanifest">
-  <link rel="stylesheet" href="./styles.css">
-  <meta name="theme-color" content="#0b0b0d" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>AD ICONIQ | Catalog</title>
+  <link rel="stylesheet" href="./styles.css"/>
 </head>
 <body>
-  <header class="topbar">
-    <a class="pill" href="./index.html">←</a>
-    <div class="brandName">Catalog</div>
-    <a class="pill" href="./cart.html">Cart <span id="cart-count" class="badge hidden">0</span></a>
-  </header>
+  <div class="glow-orb orb-a"></div>
+  <div class="glow-orb orb-b"></div>
+  <div class="glow-orb orb-c"></div>
 
-  <main class="container">
-    <div class="filters">
-      <input id="search" class="input" placeholder="Search products…" />
-      <select id="sort" class="input">
-        <option value="featured">Sort: Featured</option>
-        <option value="price-asc">Price: Low → High</option>
-        <option value="price-desc">Price: High → Low</option>
-        <option value="title-asc">Title: A → Z</option>
-      </select>
+  <div class="app">
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <div class="brand">
+          <div class="logo"></div>
+          <div class="brand-title">AD ICONIQ</div>
+        </div>
+        <div class="search">
+          <span style="opacity:.7">⌕</span>
+          <input id="search-input" placeholder="Search products…" />
+        </div>
+        <a class="pill" href="./index.html">Home</a>
+      </div>
+    </header>
+
+    <main class="container hero">
+      <section class="glass">
+        <div class="glass-inner">
+          <div class="kicker"><span class="badge">SHOP</span><span>Live from Shopify</span></div>
+          <h1 class="h1">Catalog</h1>
+          <p class="sub">If products don’t show, your Storefront token/scopes are wrong or the API call is blocked.</p>
+        </div>
+      </section>
+
+      <div class="section-title">Products</div>
+      <div id="products-grid" class="grid"></div>
+    </main>
+
+    <nav class="bottom-nav">
+      <div class="container nav-inner">
+        <a class="nav-link" href="./index.html"><span class="icon">⌂</span><span>Home</span></a>
+        <a class="nav-link active" href="./catalog.html"><span class="icon">★</span><span>Catalog</span></a>
+        <a class="nav-link" href="./cart.html"><span class="icon">🛒</span><span>Cart <span id="cart-count"></span></span></a>
+        <a class="nav-link" href="./account.html"><span class="icon">👤</span><span>Account</span></a>
+      </div>
+    </nav>
+
+    <div id="toast" class="toast"></div>
+
+    <div id="product-modal" class="modal">
+      <div class="modal-panel">
+        <div class="modal-head">
+          <p class="modal-title" id="modal-title">Product</p>
+          <button class="modal-close" onclick="closeModal()">×</button>
+        </div>
+        <div class="modal-body" id="modal-content"></div>
+      </div>
     </div>
-
-    <div id="products-grid" class="grid"></div>
-    <div id="products-loading" class="muted">Loading products…</div>
-    <div id="products-error" class="error hidden"></div>
-  </main>
-
-  <nav class="tabbar">
-    <a class="tab" href="./index.html">Home</a>
-    <a class="tab active" href="./catalog.html">Catalog</a>
-    <a class="tab" href="./cart.html">Cart <span id="cart-count-2" class="badge hidden">0</span></a>
-    <a class="tab" href="./account.html">Account</a>
-  </nav>
+  </div>
 
   <script src="./main.js"></script>
 </body>
